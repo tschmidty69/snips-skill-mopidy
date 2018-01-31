@@ -8,7 +8,7 @@ setup(
     url='https://github.com/snipsco/snips-skill-mopidy',
     download_url='',
     license='MIT',
-    install_requires=['soco'],
+    install_requires=['python-mpd2'],
     test_suite="tests",
     keywords=['snips', 'mopidy'],
     packages=['snipsmopidy'],
