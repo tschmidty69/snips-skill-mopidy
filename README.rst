@@ -7,11 +7,7 @@ Mopidy skill for Snips
 Installation
 ------------
 
-The skill is on `PyPI <https://pypi.python.org/pypi/snipsMopidy>`_, so you can just install it with `pip <http://www.pip-installer.org>`_:
-
-.. code-block:: console
-
-    $ pip install snipsMopidy
+snipsfile below
 
 Snips Skills Manager
 ^^^^^^^^^^^^^^^^^^^^
@@ -21,14 +17,14 @@ It is recommended that you use this skill with the `Snips Skills Manager <https:
 .. code-block:: yaml
 
     skills:
-      - pip: https://github.com/snipsco/snips-skills-Mopidy
+      - pip: https://github.com/tschmidty69/snips-skill-mopidy
         package_name: snipsMopidy
         class_name: SnipsMopidy
 
 Usage
 -----
 
-The skill allows you to control `Mopidy <http://musicpartners.Mopidy.com/docs?q=node/442>`_ speakers. You can use it as follows:
+The skill allows you to control Mopidy. You can use it as follows:
 
 .. code-block:: python
 
@@ -42,7 +38,7 @@ The ``SPOTIFY_REFRESH_TOKEN`` is used for playing music from Spotify. You can ob
 Copyright
 ---------
 
-This skill is provided by `Snips <https://www.snips.ai>`_ as Open Source software. See `LICENSE.txt <https://github.com/snipsco/snips-skill-hue/blob/master/LICENSE.txt>`_ for more
+See `LICENSE.txt <https://github.com/snipsco/snips-skill-hue/blob/master/LICENSE.txt>`_ for more
 information.
 
 .. |Build Status| image:: https://travis-ci.org/snipsco/snips-skill-Mopidy.svg
