@@ -15,7 +15,10 @@ GAIN = 4
 
 
 class SnipsMopidy:
-    """ Mopidy skill for Snips. """
+    """Mopidy skill for Snips.
+
+    :param hostname: The hostname of the Mopidy player
+    """
 
     def __init__(self, spotify_refresh_token=None, speaker_index=None, locale=None):
         self.client = MPDClient()
