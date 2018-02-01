@@ -17,13 +17,12 @@ GAIN = 4
 class SnipsMopidy:
     """Mopidy skill for Snips.
 
-    :param hostname: The hostname of the Mopidy player
+    :param mopidy_host: The hostname of the Mopidy player
     """
 
-    def __init__(self, spotify_refresh_token=None, speaker_index=None, locale=None):
+    def __init__(self, spotify_refresh_token=None, speaker_index=None,
+                 mopidy_host='127.0.0.1', locale=None):
         self.client = MPDClient()
-        if mopidy_host == None:
-            mopidy_host = '127.0.0.1'
         self.client.connect(mopidy_host, 6600)
         print(client.mpd_version)
         print(client.find("any", "house"))
