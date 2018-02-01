@@ -24,8 +24,8 @@ class SnipsMopidy:
                  mopidy_host='127.0.0.1', locale=None):
         self.client = MPDClient()
         self.client.connect(mopidy_host, 6600)
-        print(client.mpd_version)
-        print(client.find("any", "house"))
+        print(self.client.mpd_version)
+        print(self.client.find("any", "house"))
 
         self.previous_volume = self.client.status().get('volume')
 
