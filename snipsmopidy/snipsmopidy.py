@@ -18,7 +18,7 @@ class SnipsMopidy:
     """ Mopidy skill for Snips. """
 
     def __init__(self, spotify_refresh_token=None, speaker_index=None, locale=None):
-        self.client = MPDClient
+        self.client = MPDClient()
         if mopidy_host = None:
             mopidy_host = '127.0.0.1'
         self.client.connect(mopidy_host, 6600)
