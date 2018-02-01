@@ -26,8 +26,8 @@ class SnipsMopidy:
         self.client.connect(mopidy_host, 6600)
         print(self.client.mpd_version)
         print(self.client.find("any", "house"))
-
-        self.previous_volume = self.client.status().get('volume')
+        status = self.client.status()
+        self.previous_volume = status.get('volume')
 
     def pause_mopidy(self):
         self.client.pause(1)
@@ -36,7 +36,8 @@ class SnipsMopidy:
         if self.client is None:
             return
         level = int(level) if level is not None else 100
-        current_volume = int(self.client.status().get('volume'))
+        status = self.client.status()
+        current_volume = int(status.get('volume', '50'))
         self.client.setvol(min(
             current_volume + GAIN * level,
             self.max_volume))
@@ -59,7 +60,8 @@ class SnipsMopidy:
     def set_to_low_volume(self):
         if self.client is None:
             return
-        if self.client.status().get('state') != 'play':
+        status = self.client.status()
+        if status.get('state') != 'play':
             return None
         self.previous_volume = self.client.status().get('volume')
         self.client.setvol(min(6, self.client.status.get('volume')))
@@ -71,7 +73,8 @@ class SnipsMopidy:
         if self.previous_volume is None:
             return None
         self.client.setvol(self.previous_volume)
-        if self.client.status().get('state') != 'play':
+        status = self.client.status()
+        if status.get('state') != 'play':
             self.client.play()
 
     def stop_mopidy(self):
@@ -177,12 +180,14 @@ class SnipsMopidy:
 
     def get_info(self):
         # Get info about currently playing tune
-        info = self.client.status.get('song')
+        status = self.client.status()
+        info = status.get('song')
         return info['title'], None, None
 
     def add_song(self):
         # Save song in spotify
-        title = self.status.get('song')
+        status = self.client.status()
+        title = status.get('song')
         self.spotify.add_song(None, title)
 
     def play(self):
