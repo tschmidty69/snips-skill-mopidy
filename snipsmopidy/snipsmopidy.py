@@ -19,11 +19,13 @@ class SnipsMopidy:
 
     def __init__(self, spotify_refresh_token=None, speaker_index=None, locale=None):
         self.client = MPDClient
-        self.client.connect('localhost', 6600)
+        if mopidy_host = None:
+            mopidy_host = '127.0.0.1'
+        self.client.connect(mopidy_host, 6600)
         print(client.mpd_version)
         print(client.find("any", "house"))
 
-        self.previous_volume = self.client.status.get('volume')
+        self.previous_volume = self.client.status().get('volume')
 
     def pause_mopidy(self):
         self.client.pause(1)
@@ -32,7 +34,7 @@ class SnipsMopidy:
         if self.client is None:
             return
         level = int(level) if level is not None else 100
-        current_volume = self.client.status.get('volume')
+        current_volume = int(self.client.status().get('volume'))
         self.client.setvol(min(
             current_volume + GAIN * level,
             self.max_volume))
@@ -55,9 +57,9 @@ class SnipsMopidy:
     def set_to_low_volume(self):
         if self.client is None:
             return
-        if self.client.status.get('state') != 'play':
+        if self.client.status().get('state') != 'play':
             return None
-        self.previous_volume = self.client.status.get('volume')
+        self.previous_volume = self.client.status().get('volume')
         self.client.setvol(min(6, self.client.status.get('volume')))
         self.client.play()
 
@@ -67,7 +69,7 @@ class SnipsMopidy:
         if self.previous_volume is None:
             return None
         self.client.setvol(self.previous_volume)
-        if self.client.status.get('state') != 'play':
+        if self.client.status().get('state') != 'play':
             self.client.play()
 
     def stop_mopidy(self):
