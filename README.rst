@@ -15,9 +15,9 @@ It is recommended that you use this skill with the `Snips Skills Manager <https:
 .. code-block:: yaml
 
     skills:
-      - url: github.com/snipsco/snips-skills-Mopidy
-        param:
-          mopidy_host: YOUR_IP # defaults to localhost
+     - pip: https://github.com/snipsco/snips-skills-Mopidy
+       package_name: snipsMopidy
+       class_name: SnipsMopidy
 
 Usage
 -----
