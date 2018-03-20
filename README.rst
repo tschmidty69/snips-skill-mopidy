@@ -1,9 +1,6 @@
 Mopidy skill for Snips
 =====================
 
-|Build Status| |PyPI| |MIT License|
-
-
 Installation
 ------------
 
