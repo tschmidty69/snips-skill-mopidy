@@ -12,7 +12,7 @@ It is recommended that you use this skill with the `Snips Skills Manager <https:
 .. code-block:: yaml
 
     skills:
-     - pip: https://github.com/snipsco/snips-skills-Mopidy
+     - url: https://github.com/snipsco/snips-skills-Mopidy
        package_name: snipsMopidy
        class_name: SnipsMopidy
 
